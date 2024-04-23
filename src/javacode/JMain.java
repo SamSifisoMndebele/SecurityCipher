@@ -1,16 +1,15 @@
-import kotlin.AESCipher;
-import kotlin.RSACipher;
+package javacode;
 
 import java.security.KeyPair;
 
-public class Main {
+public class JMain {
     public static void main(String[] args) {
 
         String text = "Hello Sam Mndebele.";
 
 
 
-        System.out.println("AESCipher");
+        System.out.println("javacode.AESCipher");
         String secreteKey = AESCipher.generateSecretKey();
         String aesEncrypted = AESCipher.encrypt(text, secreteKey);
         String aesDecrypted = AESCipher.decrypt(aesEncrypted, secreteKey);
@@ -19,7 +18,7 @@ public class Main {
 
 
         System.out.println();
-        System.out.println("RSACipher");
+        System.out.println("javacode.RSACipher");
         KeyPair keyPair = RSACipher.generateKeyPair();
         String rsaEncrypted = RSACipher.encrypt(text, keyPair.getPublic());
         String rsaDecrypted = RSACipher.decrypt(rsaEncrypted, keyPair.getPrivate());

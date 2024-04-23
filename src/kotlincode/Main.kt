@@ -1,12 +1,22 @@
-package kotlin
+package kotlincode
 
-import kotlin.RSACipher.string
+import kotlincode.RSACipher.string
 import java.security.KeyPair
-import java.security.MessageDigest
 
 fun main() {
+    /*val md = MessageDigest.getInstance("SHA-256")
+        val digest = md.digest("Sam".toByteArray())
+            .joinToString(":") {"%02x".format(it)}
+        println(digest)
 
-    val secreteLoremIpsum = """Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
+        val hash = md.digest("Sam".toByteArray())
+            .fold("") { str, it -> str + "%02x".format(it) }
+        println(hash)*/
+
+    val secreteMessage = """
+        Hello Sam Sifiso Mndebele.
+        
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
         volutpat, dolor id interdum ullamcorper, risus dolor egestas lectus, sit amet mattis purus
         dui nec risus. Maecenas non sodales nisi, vel dictum dolor. Class aptent taciti sociosqu ad
         litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse blandit eleifend
@@ -44,22 +54,10 @@ fun main() {
         sodales. Praesent bibendum rhoncus tellus nec feugiat. In a ornare nulla. Donec rhoncus
         libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim."""
-    val secreteMessage = "Hello Sam Sifiso Mndebele."
 
     val secreteKey = AESCipher.generateSecretKey
     println("secreteMessage : $secreteMessage")
     println("secreteKey : $secreteKey")
-
-    val md = MessageDigest.getInstance("SHA-256")
-    val digest = md.digest("Sam".toByteArray())
-        .joinToString(":") {"%02x".format(it)}
-    println(digest)
-
-    val hash = md.digest("Sam".toByteArray())
-        .fold("") { str, it -> str + "%02x".format(it) }
-    println(hash)
-
-    return
 
     val aesEncrypted = AESCipher.encrypt(secreteMessage, secreteKey)
     println("Sent encryptedMessage : $aesEncrypted")
@@ -78,19 +76,19 @@ fun main() {
 
 
 
-    /*println("AESCipher")
-    val secreteKey = AESCipher.generateSecretKey()
-    val aesEncrypted = AESCipher.encrypt(text, secreteKey)
-    val aesDecrypted = AESCipher.decrypt(aesEncrypted, secreteKey)
+    /*println("javacode.AESCipher")
+    val secreteKey = javacode.AESCipher.generateSecretKey()
+    val aesEncrypted = javacode.AESCipher.encrypt(text, secreteKey)
+    val aesDecrypted = javacode.AESCipher.decrypt(aesEncrypted, secreteKey)
     println("encrypted : $aesEncrypted")
     println("decrypted : $aesDecrypted")
 
 
     println()
-    println("RSACipher")
-    val keyPair: KeyPair = RSACipher.generateKeyPair()
-    val rsaEncrypted = RSACipher.encrypt(loremIpsum, keyPair.public)
-    val rsaDecrypted = RSACipher.decrypt(rsaEncrypted, keyPair.private)
+    println("javacode.RSACipher")
+    val keyPair: KeyPair = javacode.RSACipher.generateKeyPair()
+    val rsaEncrypted = javacode.RSACipher.encrypt(loremIpsum, keyPair.public)
+    val rsaDecrypted = javacode.RSACipher.decrypt(rsaEncrypted, keyPair.private)
     println("encrypted : $rsaEncrypted")
     println("decrypted : $rsaDecrypted")*/
 }

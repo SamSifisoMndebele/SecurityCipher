@@ -1,8 +1,8 @@
-package kotlin
+package kotlincode
 
 import java.nio.charset.StandardCharsets.UTF_16LE
 import java.security.NoSuchAlgorithmException
-import java.util.Base64
+import java.util.*
 import javax.crypto.Cipher
 import javax.crypto.KeyGenerator
 import javax.crypto.spec.IvParameterSpec
@@ -11,7 +11,7 @@ import javax.crypto.spec.SecretKeySpec
 object AESCipher {
     val generateSecretKey: String
         get() {
-            var secretKey = ByteArray(50)
+            var secretKey = ByteArray(16)
             try {
                 val keyGenerator = KeyGenerator.getInstance("AES")
                 keyGenerator.init(256) //32 bytes
